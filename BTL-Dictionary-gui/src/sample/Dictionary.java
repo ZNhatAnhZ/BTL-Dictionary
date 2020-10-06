@@ -3,50 +3,43 @@ package sample;
 import java.util.ArrayList;
 
 public class Dictionary {
-    private Word[] Word_Storage = new Word[300];
-    private int Word_count = 0;
-
+    private ArrayList<Word> Word_Storage = new ArrayList<>();
     public void addWord(Word newWord) {
-        Word_Storage[Word_count] = newWord;
-        Word_count++;
+        Word_Storage.add(newWord);
     }
     public int getWord_count() {
-        return Word_count;
+        return Word_Storage.size();
     }
     public Word getWord(int i) {
-        return Word_Storage[i];
+        return Word_Storage.get(i);
     }
     public String word_explainLookup (String word_target) {
-        for(int i=0; i < Word_count; i++) {
-            if (Word_Storage[i].getWord_target().equals(word_target)) return Word_Storage[i].getWord_explain();
+        for(int i=0; i < Word_Storage.size(); i++) {
+            if (Word_Storage.get(i).getWord_target().equals(word_target)) return Word_Storage.get(i).getWord_explain();
         }
         return null;
     }
     public void changeWord(Word word_old, Word word_new) {
-        for(int i=0; i < Word_count ; i++) {
-            if (Word_Storage[i].equals(word_old)) {
-                Word_Storage[i].setWord_target(word_new.getWord_target());
-                Word_Storage[i].setWord_explain(word_new.getWord_explain());
+        for(int i=0; i < Word_Storage.size() ; i++) {
+            if (Word_Storage.get(i).equals(word_old)) {
+                Word_Storage.get(i).setWord_target(word_new.getWord_target());
+                Word_Storage.get(i).setWord_explain(word_new.getWord_explain());
                 break;
             }
         }
     }
     public void deleteWord(Word delete_word) {
-        for(int i=0; i < Word_count ; i++) {
-            if (Word_Storage[i].equals(delete_word)) {
-                Word_count--;
-                    for(int j=i; j < Word_count; j++) {
-                        Word_Storage[j] = Word_Storage[j+1];
-                    }
-                break;
+        for(int i=0; i < Word_Storage.size() ; i++) {
+            if (Word_Storage.get(i).equals(delete_word)) {
+                Word_Storage.remove(i);
             }
         }
     }
     public ArrayList<String> searcherWord(String s) {
         ArrayList<String> temp = new ArrayList<>();
-        for(int i=0; i < Word_count; i++) {
-            if (Word_Storage[i].getWord_target().startsWith(s)) {
-                temp.add(Word_Storage[i].getWord_target());
+        for(int i=0; i < Word_Storage.size(); i++) {
+            if (Word_Storage.get(i).getWord_target().startsWith(s)) {
+                temp.add(Word_Storage.get(i).getWord_target());
             }
         }
         return temp;

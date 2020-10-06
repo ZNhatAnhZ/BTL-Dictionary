@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 
+
 public class firstController {
     protected DictionaryManagement Dict = new DictionaryManagement();
 
@@ -25,24 +26,23 @@ public class firstController {
     private Button firstSearchButton;
     @FXML
     public void initialize() {
-        Dict.insertFromFile();
+        Dict.insertFromMySQL();
+    }
+
+    public void autocomplete() {
         TextFields.bindAutoCompletion(firstSearchBar, Dict.Searcher(firstSearchBar.getText()));
     }
-    public void forwardScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("secondScene.fxml"));
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 800, 500));
-        window.show();
-    }
+
     public void firstSearchButtonAction(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("secondScene.fxml"));
         Parent root = loader.load();
-
+        String temp[] = new String[100];
         String s = Dict.dictionaryLookup(firstSearchBar.getText());
-        if (s.length() > 0) {
+        if (s != null) {
+            temp = s.split("<br />");
             secondController secondcontroller = loader.getController();
-            secondcontroller.setSecondDefinition(s);
+            secondcontroller.setSecondDefinition(temp);
 
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 800, 500));

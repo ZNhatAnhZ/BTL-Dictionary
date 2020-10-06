@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -70,7 +74,7 @@ public class DictionaryManagement {
             return Dict.word_explainLookup(word_target);
         }
         else {
-            return "";
+            return null;
         }
     }
     public void changeWord() {
@@ -97,5 +101,17 @@ public class DictionaryManagement {
     }
     public ArrayList<String> Searcher(String s) {
         return Dict.searcherWord(s);
+    }
+    public void insertFromMySQL() {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8&useConfigs=maxPerformance","root","1892001");
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM dictionary_data");
+            while(rs.next()) {
+                Word temp = new Word(rs.getString("word"), rs.getString("detail"));
+                Dict.addWord(temp);
+            }
+        }catch(Exception e){ System.out.println(e);}
     }
 }

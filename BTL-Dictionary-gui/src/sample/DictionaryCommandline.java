@@ -1,10 +1,10 @@
 package sample;
 
 import java.util.ArrayList;
-import java.io.*;
 import java.util.Scanner;
 
 public class DictionaryCommandline {
+    /*
     Scanner sc = new Scanner(System.in);
     private DictionaryManagement DictionaryUtility = new DictionaryManagement();
 
@@ -21,10 +21,10 @@ public class DictionaryCommandline {
         DictionaryUtility.dictionaryLookup(sc.nextLine());
     }
     public void dictionaryChangeWord() {
-        DictionaryUtility.changeWord();
+        DictionaryUtility.changeWordAndPronoun();
     }
     public void dictionaryDeleteWord() {
-        DictionaryUtility.deleteWord();
+        DictionaryUtility.deleteWordAndPronoun();
     }
     public void dictionarySearcher() {
         System.out.println("Nhập từ cần tìm");
@@ -34,4 +34,5 @@ public class DictionaryCommandline {
             System.out.print(temp.get(i) + ", ");
         }
     }
+     */
 }

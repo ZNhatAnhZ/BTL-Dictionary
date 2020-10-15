@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -77,27 +74,12 @@ public class DictionaryManagement {
             return null;
         }
     }
-    public void changeWord() {
-        System.out.print("Nhập từ muốn thay đổi: ");
-        String word_target_old = new String(sc.next());
-        sc.nextLine();
-        System.out.print("Nhập từ muốn thay đổi thành: ");
-        String word_target_new = new String(sc.next());
-        sc.nextLine();
-        System.out.print("Giải thích nghĩa của từ đó: ");
-        String word_explain_new = new String(sc.nextLine());
-        Word newWord = new Word(word_target_new, word_explain_new);
-        Word oldWord = new Word(word_target_old, Dict.word_explainLookup(word_target_old));
-        Dict.changeWord(oldWord,newWord);
-        dictionaryExportToFile();
+    public void changeWordAndPronoun(Word new_word, String pronoun, int index) {
+        Dict.changeWordAndPronoun(new_word, pronoun, index);
     }
-    public void deleteWord() {
-        System.out.print("Nhập từ muốn xóa: ");
-        String delete_word_target = new String(sc.next());
-        sc.nextLine();
+    public void deleteWordAndPronoun(String delete_word_target) {
         Word deleteWord = new Word(delete_word_target, Dict.word_explainLookup(delete_word_target));
-        Dict.deleteWord(deleteWord);
-        dictionaryExportToFile();
+        Dict.deleteWordAndPronoun(deleteWord);
     }
     public ArrayList<String> Searcher(String s) {
         return Dict.searcherWord(s);
@@ -105,13 +87,33 @@ public class DictionaryManagement {
     public void insertFromMySQL() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8&useConfigs=maxPerformance","root","1892001");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/testing?characterEncoding=UTF-8&&" + "useSSL=false","root","1892001");
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("SELECT * FROM dictionary_data");
             while(rs.next()) {
                 Word temp = new Word(rs.getString("word"), rs.getString("detail"));
                 Dict.addWord(temp);
             }
+            ResultSet res=stmt.executeQuery("SELECT * FROM pronunciation");
+            while(res.next()) {
+                Dict.addPronun(res.getString("pronun"));
+            }
+
         }catch(Exception e){ System.out.println(e);}
+    }
+    public String getPronun(String s) {
+        return Dict.getPronun(s);
+    }
+    public void addPronun(String pronun) {
+        Dict.addPronun(pronun);
+    }
+    public ArrayList<String> getAllWord_Target() {
+        return Dict.getAllWord_Target();
+    }
+    public void addWord(String Word_target, String Word_explain) {
+        Dict.addWord(new Word(Word_target, Word_explain));
+    }
+    public int getWordId(String word_target) {
+        return Dict.getWordId(word_target);
     }
 }

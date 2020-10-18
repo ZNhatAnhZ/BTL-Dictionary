@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSnackbar?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.firstSceneController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.firstSceneController">
    <top>
-      <AnchorPane fx:id="anchorSearchPane" prefHeight="152.0" prefWidth="800.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorSearchPane" prefHeight="172.0" prefWidth="1000.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="firstSearchBar" layoutX="90.0" layoutY="70.0" onAction="#firstSearchButtonAction" prefHeight="37.0" prefWidth="619.0" promptText="Search" style="-fx-prompt-text-fill: #989898;">
+            <JFXTextField fx:id="firstSearchBar" layoutX="147.0" layoutY="64.0" onAction="#firstSearchButtonAction" prefHeight="53.0" prefWidth="706.0" promptText="Search" style="-fx-prompt-text-fill: #989898;">
                <focusColor>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -20,10 +26,10 @@
                   </LinearGradient>
                </focusColor>
                <font>
-                  <Font size="17.0" />
+                  <Font size="20.0" />
                </font>
                <unFocusColor>
-                  <RadialGradient centerX="0.4999999576144749" centerY="0.4923664194936971" radius="0.5373831864829375">
+                  <RadialGradient centerX="0.4999999576144749" centerY="0.4923664194936971" focusDistance="0.09345794392523366" radius="1.0">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="WHITE" offset="1.0" />
@@ -31,9 +37,9 @@
                   </RadialGradient>
                </unFocusColor>
             </JFXTextField>
-            <JFXButton fx:id="firstSearchButton" layoutX="677.0" layoutY="76.0" onAction="#firstSearchButtonAction" prefHeight="30.0" prefWidth="33.0" ripplerFill="BLACK" style="-fx-background-radius: 10;" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="firstSearchButton" alignment="CENTER" buttonType="RAISED" layoutX="819.0" layoutY="75.0" onAction="#firstSearchButtonAction" prefHeight="39.0" prefWidth="46.0" ripplerFill="BLACK" style="-fx-background-radius: 10;" text=" " textAlignment="CENTER">
                <graphic>
-                  <FontAwesomeIcon glyphName="SEARCH" selectionFill="BLACK" size="1.7em" wrappingWidth="7.599976062774658">
+                  <FontAwesomeIcon glyphName="SEARCH" selectionFill="BLACK" size="2em" stroke="#000000ba" wrappingWidth="14.285715103149414">
                      <fill>
                         <RadialGradient centerX="0.5" centerY="0.5" cycleMethod="REPEAT" focusAngle="-161.63" focusDistance="-0.037383231047157905" radius="0.8971962260308667">
                            <stops>
@@ -45,54 +51,59 @@
                   </FontAwesomeIcon>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="closeButton" alignment="CENTER" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="964.0" onAction="#handleCloseButtonAction">
+               <graphic>
+                  <FontAwesomeIcon fill="#0000008a" glyphName="TIMES" size="2em" stroke="BLACK" />
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="346.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="firstSettingButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="168.0" layoutY="67.0" onAction="#firstSettingButtonAction" opacity="0.91" prefHeight="106.0" prefWidth="102.0" style="-fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" text="Setting" textOverrun="CLIP">
+            <JFXButton fx:id="firstSettingButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="160.0" layoutY="125.0" onAction="#firstSettingButtonAction" opacity="0.91" prefHeight="135.0" prefWidth="140.0" style="-fx-border-color: #000000ba; -fx-border-width: 0px 0px 2px 0px; -fx-background-radius: 10px;" text="Setting" textOverrun="CLIP">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fontSmoothingType="LCD" glyphName="COGS" opacity="0.9" size="3em" text="">
+                  <FontAwesomeIcon fill="#000000b9" fontSmoothingType="LCD" glyphName="COGS" opacity="0.9" size="4em" stroke="BLACK" text="">
                      <effect>
                         <Shadow height="0.3" radius="0.0" width="0.3" />
                      </effect>
                   </FontAwesomeIcon>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="287.0" layoutY="67.0" opacity="0.9" prefHeight="106.0" prefWidth="102.0" style="-fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" text="Google api">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="340.0" layoutY="125.0" onAction="#firstApiButtonAction" opacity="0.9" prefHeight="135.0" prefWidth="140.0" style="-fx-border-color: #000000ba; -fx-border-width: 0px 0px 2px 0px; -fx-background-radius: 10px;" text="Google api">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fontSmoothingType="LCD" glyphName="CODE" opacity="0.9" size="3em">
+                  <FontAwesomeIcon fill="#000000b9" fontSmoothingType="LCD" glyphName="CODE" opacity="0.9" size="4em" stroke="BLACK">
                      <effect>
                         <Shadow height="0.3" radius="0.0" width="0.3" />
                      </effect>
                   </FontAwesomeIcon>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="406.0" layoutY="67.0" opacity="0.9" prefHeight="106.0" prefWidth="102.0" style="-fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" text="Favorites">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="520.0" layoutY="125.0" onAction="#firstFavButtonAction" opacity="0.9" prefHeight="135.0" prefWidth="140.0" style="-fx-border-color: #000000ba; -fx-border-width: 0px 0px 2px 0px; -fx-background-radius: 10px;" text="Favorites">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fontSmoothingType="LCD" glyphName="BOOKMARK" opacity="0.9" size="3em">
+                  <FontAwesomeIcon fill="#000000b9" fontSmoothingType="LCD" glyphName="BOOKMARK" opacity="0.9" size="4em" stroke="BLACK">
                      <effect>
                         <Shadow height="0.3" radius="0.0" width="0.3" />
                      </effect>
                   </FontAwesomeIcon>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="527.0" layoutY="67.0" opacity="0.9" prefHeight="106.0" prefWidth="102.0" style="-fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" text="History">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="700.0" layoutY="125.0" onAction="#firstHisButtonAction" opacity="0.9" prefHeight="135.0" prefWidth="140.0" style="-fx-border-color: #000000ba; -fx-border-width: 0px 0px 2px 0px; -fx-background-radius: 10px;" text="History">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fontSmoothingType="LCD" glyphName="HISTORY" opacity="0.9" size="3em">
+                  <FontAwesomeIcon fill="#000000ba" fontSmoothingType="LCD" glyphName="HISTORY" opacity="0.9" size="4em" stroke="BLACK">
                      <effect>
                         <Shadow height="0.3" radius="0.0" width="0.3" />
                      </effect>
@@ -102,7 +113,7 @@
          </children></AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="101.0" prefWidth="1000.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
          <children>
             <JFXSnackbar fx:id="errorWarning" layoutX="340.0" layoutY="45.0" />
          </children>

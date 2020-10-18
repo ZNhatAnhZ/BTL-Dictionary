@@ -30,7 +30,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class settingSceneController {
-    DictionaryManagement Dict = new DictionaryManagement();
+    DictionaryManagement Dict = DictionaryManagement.getInstance();
     @FXML
     JFXListView<String> settingListView = new JFXListView<>();
     @FXML
@@ -47,10 +47,14 @@ public class settingSceneController {
     JFXButton settingAddButton = new JFXButton();
     @FXML
     JFXSnackbar Notification = new JFXSnackbar();
+    @FXML
+    JFXButton closeButton = new JFXButton();
 
+    public void handleCloseButtonAction(ActionEvent event) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
     public void initialize() {
-        Dict.insertFromMySQL();
-
         ObservableList<String> list = FXCollections.observableArrayList(Dict.getAllWord_Target());
         settingListView.setItems(list);
         settingListView.setStyle("-fx-background-insets: 0 ;");
@@ -75,7 +79,7 @@ public class settingSceneController {
     public void backwardScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("firstScene.fxml"));
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 800, 500));
+        window.setScene(new Scene(root, 1000, 600));
         window.show();
     }
     public void settingSearchButtonAction(ActionEvent event) throws IOException {
@@ -247,6 +251,7 @@ public class settingSceneController {
         Dict.deleteWordAndPronoun(settingListView.getSelectionModel().getSelectedItem());
         ObservableList<String> list = FXCollections.observableArrayList(Dict.Searcher(settingSearchBar.getText()));
         settingListView.setItems(list);
+        settingTextArea.setText("");
 
         Label tempLabel = new Label("Đã xóa từ đó");
         tempLabel.setTextFill(Paint.valueOf("Red"));

@@ -5,12 +5,22 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class DictionaryManagement {
     private Dictionary Dict = new Dictionary();
     private Scanner sc = new Scanner(System.in);
+    private Set<String> FavWord= new HashSet<>();
+    private Set<String> HisWord= new HashSet<>();
+
+    // Singleton implement
+    private static DictionaryManagement single_instance = null;
+    private DictionaryManagement() {}
+    public static DictionaryManagement getInstance() {
+        if (single_instance == null) single_instance = new DictionaryManagement();
+        return single_instance;
+    }
+    // end of implement
 
     public void insertFromCommandline() {
         System.out.print("Nhập số lượng từ vựng muốn thêm vào: ");
@@ -65,6 +75,36 @@ public class DictionaryManagement {
             System.out.println("Error while writing the file");
             return;
         }
+    }
+    public void addFavWord(String word_target) {
+        FavWord.add(word_target);
+    }
+    public ArrayList<String> getFavWord() {
+        ArrayList<String> temp = new ArrayList<>(FavWord);
+        return temp;
+    }
+    public boolean isFavWord(String word_target) {
+        if (FavWord.contains(word_target)) return true;
+        return false;
+    }
+    public void delFavWord(String word_target) {
+        FavWord.remove(word_target);
+    }
+    public void addHisWord(String word_target) {
+        HisWord.add(word_target);
+    }
+    public ArrayList<String> getHisWord() {
+        ArrayList<String> temp = new ArrayList<>(HisWord);
+        return temp;
+    }
+    public ArrayList<String> searcherCustom(String s, ArrayList<String> x) {
+        ArrayList<String> temp = new ArrayList<>();
+        for(int i=0; i < x.size(); i++) {
+            if (x.get(i).startsWith(s)) {
+                temp.add(x.get(i));
+            }
+        }
+        return temp;
     }
     public String dictionaryLookup(String word_target) {
         if (Dict.word_explainLookup(word_target) != null) {

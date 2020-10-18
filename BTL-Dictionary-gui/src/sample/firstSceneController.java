@@ -26,7 +26,7 @@ import static javafx.scene.text.FontWeight.BOLD;
 
 
 public class firstSceneController {
-    public DictionaryManagement Dict = new DictionaryManagement();
+    private DictionaryManagement Dict = DictionaryManagement.getInstance();
 
     @FXML
     JFXSnackbar errorWarning = new JFXSnackbar();
@@ -38,9 +38,16 @@ public class firstSceneController {
     JFXTextField firstSearchBar = new JFXTextField();
     @FXML
     JFXButton firstSettingButton = new JFXButton();
+    @FXML
+    JFXButton closeButton = new JFXButton();
+    int count =  0;
 
     public void initialize() {
-        Dict.insertFromMySQL();
+        if (count == 0) {
+            Dict.insertFromMySQL();
+            count++;
+        }
+
 
         JFXAutoCompletePopup<String> autoCompletePopup = new JFXAutoCompletePopup<>();
         autoCompletePopup.getSuggestions().addAll(Dict.getAllWord_Target());
@@ -63,22 +70,26 @@ public class firstSceneController {
             }
         });
     }
-
+    public void handleCloseButtonAction(ActionEvent event) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
     public void firstSearchButtonAction(ActionEvent event) throws IOException {
         if (!firstSearchBar.getText().equals("")) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("secondScene.fxml"));
-            Parent root = loader.load();
             String temp[] = new String[100];
             String s = Dict.dictionaryLookup(firstSearchBar.getText());
             if (s != null) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("secondScene.fxml"));
+                Parent root = loader.load();
+                Dict.addHisWord(firstSearchBar.getText());
                 temp = s.split("<br />");
                 secondSceneController secondcontroller = loader.getController();
                 secondcontroller.setSecondDefinition(Dict.getPronun(firstSearchBar.getText()));
                 secondcontroller.setSecondDefinition(temp);
 
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                window.setScene(new Scene(root, 800, 500));
+                window.setScene(new Scene(root, 1000, 600));
                 window.show();
             } else {
                 Label tempLabel = new Label("Không tìm thấy từ đó");
@@ -91,14 +102,42 @@ public class firstSceneController {
         }
 
     }
-
     public void firstSettingButtonAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("settingScene.fxml"));
         Parent root = loader.load();
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 800, 500));
+        window.setScene(new Scene(root, 1000, 600));
         window.show();
     }
+    public void firstApiButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("apiScene.fxml"));
+        Parent root = loader.load();
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 1000, 600));
+        window.show();
+    }
+    public void firstFavButtonAction (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("secondScene.fxml"));
+        Parent root = loader.load();
+        secondSceneController secondcontroller = loader.getController();
+        secondcontroller.secondTabPane.getSelectionModel().select(2);
 
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 1000, 600));
+        window.show();
+    }
+    public void firstHisButtonAction (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("secondScene.fxml"));
+        Parent root = loader.load();
+        secondSceneController secondcontroller = loader.getController();
+        secondcontroller.secondTabPane.getSelectionModel().select(1);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 1000, 600));
+        window.show();
+    }
 }

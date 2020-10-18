@@ -8,89 +8,96 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.secondSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.secondSceneController">
    <children>
-      <AnchorPane layoutY="98.0" prefHeight="401.0" prefWidth="204.0" style="-fx-background-color: #fdf5e6;">
+      <AnchorPane layoutY="107.0" prefHeight="502.0" prefWidth="194.0" style="-fx-background-color: #fdf5e6;">
          <children>
-            <JFXTabPane cache="true" prefHeight="402.0" prefWidth="243.0" side="LEFT" tabMaxHeight="19.0" tabMaxWidth="60.0" tabMinHeight="15.0" tabMinWidth="130.0">
+            <JFXTabPane fx:id="secondTabPane" cache="true" layoutY="2.0" prefHeight="490.0" prefWidth="303.0" side="LEFT" stylesheets="@secondscenetabpanel.css" tabMaxHeight="24.0" tabMaxWidth="300.0" tabMinHeight="26.0" tabMinWidth="150.0">
                <tabs>
                   <Tab>
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="231.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="231.0" style="-fx-border-color: transparent;">
                            <children>
-                              <JFXListView fx:id="firstListView" onMouseClicked="#selectedListViewAction" opacity="0.9" prefHeight="400.0" prefWidth="223.0" style="-fx-border-color: transparent;" />
+                              <JFXListView fx:id="firstListView" onMouseClicked="#selectedListViewAction" opacity="0.9" prefHeight="490.0" prefWidth="280.0" stylesheets="@secondscenelistview.css" />
                            </children></AnchorPane>
                     </content>
                      <graphic>
-                        <FontAwesomeIcon glyphName="BOOK" rotate="90.0" />
+                        <FontAwesomeIcon fill="#0000008d" glyphName="BOOK" rotate="90.0" size="1.3em" stroke="#00000042" />
                      </graphic>
                   </Tab>
                   <Tab>
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXListView fx:id="firstListView1" onMouseClicked="#selectedListViewAction1" opacity="0.9" prefHeight="490.0" prefWidth="280.0" stylesheets="@secondscenelistview.css" />
+                           </children></AnchorPane>
                     </content>
                      <graphic>
-                        <FontAwesomeIcon glyphName="BOOKMARK" rotate="90.0" />
+                        <FontAwesomeIcon fill="#0000008d" glyphName="HISTORY" rotate="90.0" size="1.3em" stroke="#00000082" />
                      </graphic>
                   </Tab>
                   <Tab>
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXListView fx:id="firstListView2" onMouseClicked="#selectedListViewAction2" opacity="0.9" prefHeight="490.0" prefWidth="280.0" stylesheets="@secondscenelistview.css" />
+                           </children></AnchorPane>
                     </content>
                      <graphic>
-                        <FontAwesomeIcon glyphName="HISTORY" rotate="90.0" />
+                        <FontAwesomeIcon fill="#0000008d" glyphName="BOOKMARK" rotate="90.0" size="1.3em" stroke="#00000082" />
                      </graphic>
                   </Tab>
                </tabs>
             </JFXTabPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="244.0" layoutY="100.0" prefHeight="400.0" prefWidth="557.0">
+      <AnchorPane layoutX="307.0" layoutY="112.0" prefHeight="495.0" prefWidth="694.0">
          <children>
-            <JFXTextArea fx:id="secondDefinition" editable="false" focusColor="BLACK" layoutX="5.0" prefHeight="400.0" prefWidth="550.0" unFocusColor="BLACK">
+            <JFXTextArea fx:id="secondDefinition" editable="false" focusColor="BLACK" layoutX="6.0" prefHeight="495.0" prefWidth="660.0" style="-fx-border-color: transparent;" unFocusColor="BLACK">
                <font>
-                  <Font size="14.0" />
+                  <Font size="17.0" />
                </font>
             </JFXTextArea>
+            <JFXButton fx:id="secondVolumeButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="657.0" onAction="#secondVolumeButtonAction" text="Button">
+               <graphic>
+                  <FontAwesomeIcon fill="#00000092" glyphName="VOLUME_UP" size="1.7em" stroke="#0000006b" />
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="242.0" layoutY="-1.0" prefHeight="100.0" prefWidth="557.0" style="-fx-background-color: #dcdcdc;">
+      <AnchorPane layoutX="307.0" layoutY="-2.0" prefHeight="106.0" prefWidth="694.0" style="-fx-background-color: #fdf5e6;">
          <children>
-            <Label layoutX="27.0" layoutY="60.0" prefHeight="26.0" prefWidth="86.0" text="Dịch nghĩa">
+            <Label layoutX="56.0" layoutY="66.0" prefHeight="30.0" prefWidth="114.0" text="Dịch nghĩa" textFill="#000000c3">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <FontAwesomeIcon glyphName="LIST" layoutX="5.0" layoutY="80.0" size="1.5em" />
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="527.0" layoutY="1.0" text=" ">
+            <FontAwesomeIcon fill="#0000009b" glyphName="LIST" layoutX="14.0" layoutY="92.0" size="2.5em" stroke="BLACK" />
+            <JFXButton fx:id="closeButton" buttonType="RAISED" contentDisplay="CENTER" layoutX="659.0" layoutY="2.0" onAction="#handleCloseButtonAction" text=" ">
                <graphic>
-                  <FontAwesomeIcon glyphName="TIMES" size="1.5em" />
+                  <FontAwesomeIcon fill="#0000009a" glyphName="TIMES" size="2em" stroke="BLACK" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="492.0" layoutY="1.0" text=" ">
-               <graphic>
-                  <FontAwesomeIcon size="1.5em" />
-               </graphic>
-            </JFXButton>
-            <JFXRadioButton fx:id="secondRadioButton" layoutX="448.0" layoutY="64.0" text="Đánh dấu">
+            <JFXRadioButton fx:id="secondRadioButton" graphicTextGap="3.0" layoutX="540.0" layoutY="66.0" onAction="#secondBookMarkButtonAction" text="Đánh dấu" textFill="#000000c3">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon glyphName="BOOKMARK" opacity="0.9" />
+                  <FontAwesomeIcon fill="#0000009b" glyphName="BOOKMARK" opacity="0.9" stroke="BLACK" />
                </graphic>
             </JFXRadioButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="100.0" prefWidth="244.0" style="-fx-background-color: #fdf5e6;">
+      <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="111.0" prefWidth="306.0" style="-fx-background-color: #fdf5e6;">
          <children>
-            <JFXTextField fx:id="secondSearchBar" focusColor="#6f6f6fe8" layoutX="25.0" layoutY="66.0" onAction="#secondSearchButtonAction" onKeyTyped="#autoCompletedTextView" prefHeight="26.0" prefWidth="214.0" promptText="Search" style="-fx-prompt-text-fill: #989898;">
+            <JFXTextField fx:id="secondSearchBar" focusColor="#6f6f6fe8" layoutX="30.0" layoutY="65.0" onAction="#secondSearchButtonAction" onKeyTyped="#autoCompletedTextView" prefHeight="32.0" prefWidth="273.0" promptText="Search" style="-fx-prompt-text-fill: #989898;">
                <unFocusColor>
                   <LinearGradient endX="1.0" endY="0.6641221369495829">
                      <stops>
@@ -99,15 +106,18 @@
                      </stops>
                   </LinearGradient>
                </unFocusColor>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </JFXTextField>
             <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="5.0" layoutY="2.0" onAction="#backwardScene" text=" ">
                <graphic>
-                  <FontAwesomeIcon glyphName="ANGLE_LEFT" size="1.5em" />
+                  <FontAwesomeIcon fill="#0000009a" glyphName="ANGLE_LEFT" size="2em" stroke="BLACK" />
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" onAction="#secondSearchButtonAction" prefHeight="26.0" prefWidth="32.0" text=" ">
+            <JFXButton contentDisplay="CENTER" layoutX="273.0" layoutY="70.0" onAction="#secondSearchButtonAction" prefHeight="26.0" prefWidth="32.0" text=" ">
                <graphic>
-                  <FontAwesomeIcon glyphName="SEARCH" opacity="0.9" size="1.2em">
+                  <FontAwesomeIcon glyphName="SEARCH" opacity="0.9" size="1.6em" stroke="BLACK">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startX="0.2137404270754516" startY="0.24427472180082604">
                            <stops>
@@ -119,7 +129,10 @@
                   </FontAwesomeIcon>
                </graphic>
             </JFXButton>
+            <Separator layoutX="304.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="111.0" prefWidth="3.0" />
+            <Separator layoutX="4.0" layoutY="107.0" prefHeight="4.0" prefWidth="303.0" />
          </children>
       </AnchorPane>
+      <Separator layoutX="304.0" layoutY="106.0" prefHeight="4.0" prefWidth="694.0" />
    </children>
 </AnchorPane>

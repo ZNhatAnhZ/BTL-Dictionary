@@ -14,12 +14,12 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.settingSceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.settingSceneController">
    <left>
-      <AnchorPane prefHeight="409.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="509.0" prefWidth="385.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="settingListView" layoutX="14.0" layoutY="48.0" onMouseClicked="#selectedListViewAction" prefHeight="346.0" prefWidth="283.0" />
-            <JFXTextField fx:id="settingSearchBar" focusColor="#5e5e5e" layoutX="14.0" layoutY="13.0" onAction="#settingSearchButtonAction" onKeyTyped="#autoCompletedTextView" prefHeight="26.0" prefWidth="283.0">
+            <JFXListView fx:id="settingListView" layoutX="14.0" layoutY="72.0" onMouseClicked="#selectedListViewAction" prefHeight="394.0" prefWidth="356.0" />
+            <JFXTextField fx:id="settingSearchBar" focusColor="#5e5e5e" layoutX="18.0" layoutY="13.0" onAction="#settingSearchButtonAction" onKeyTyped="#autoCompletedTextView" prefHeight="46.0" prefWidth="346.0">
                <unFocusColor>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -28,49 +28,52 @@
                      </stops>
                   </LinearGradient>
                </unFocusColor>
+               <font>
+                  <Font size="20.0" />
+               </font>
             </JFXTextField>
-            <JFXButton fx:id="settingSearchButton" contentDisplay="CENTER" layoutX="274.0" layoutY="14.0" onAction="#settingSearchButtonAction" text=" ">
+            <JFXButton fx:id="settingSearchButton" contentDisplay="CENTER" layoutX="336.0" layoutY="30.0" onAction="#settingSearchButtonAction" text=" ">
                <graphic>
-                  <FontAwesomeIcon glyphName="SEARCH" />
+                  <FontAwesomeIcon fill="#00000091" glyphName="SEARCH" size="1.7em" stroke="#00000098" />
                </graphic>
             </JFXButton>
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="409.0" prefWidth="347.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="509.0" prefWidth="462.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextArea fx:id="settingTextArea" focusColor="#405aa800" layoutX="10.0" layoutY="48.0" prefHeight="346.0" prefWidth="327.0" style="-fx-border-color: #c0c0c0; -fx-background-color: #fffafa;" unFocusColor="#4d4d4d00" />
-            <Label layoutX="115.0" layoutY="14.0" text="Phần giải nghĩa">
+            <JFXTextArea fx:id="settingTextArea" focusColor="#405aa800" layoutX="10.0" layoutY="48.0" prefHeight="420.0" prefWidth="439.0" style="-fx-border-color: #c0c0c0; -fx-background-color: #fffafa;" unFocusColor="#4d4d4d00" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="14.0" prefHeight="26.0" prefWidth="264.0" text="Phần giải nghĩa">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="19.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
    </right>
    <center>
-      <AnchorPane prefHeight="374.0" prefWidth="94.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="509.0" prefWidth="329.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="settingDeleteButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="31.0" layoutY="171.0" onAction="#settingRemoveButtonAction" prefHeight="86.0" prefWidth="82.0" style="-fx-border-color: #a9a9a9;" text="Xóa">
+            <JFXButton fx:id="settingDeleteButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="35.0" layoutY="212.0" onAction="#settingRemoveButtonAction" prefHeight="86.0" prefWidth="82.0" style="-fx-border-color: #a9a9a9;" text="Xóa">
                <graphic>
-                  <FontAwesomeIcon glyphName="TRASH" size="2em" />
+                  <FontAwesomeIcon fill="#0000007f" glyphName="TRASH" size="2em" stroke="#00000088" />
                </graphic>
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="settingChangeButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="31.0" layoutY="298.0" onAction="#settingChangeButtonAction" prefHeight="86.0" prefWidth="87.0" style="-fx-border-color: #a9a9a9;" text="Chỉnh sửa" textOverrun="CLIP">
+            <JFXButton fx:id="settingChangeButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="32.0" layoutY="344.0" onAction="#settingChangeButtonAction" prefHeight="86.0" prefWidth="87.0" style="-fx-border-color: #a9a9a9;" text="Chỉnh sửa" textOverrun="CLIP">
                <graphic>
-                  <FontAwesomeIcon glyphName="SAVE" size="2em" />
+                  <FontAwesomeIcon fill="#0000007f" glyphName="SAVE" size="2em" stroke="#00000088" />
                </graphic>
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="settingAddButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="31.0" layoutY="48.0" onAction="#settingAddButtonAction" prefHeight="86.0" prefWidth="82.0" style="-fx-border-color: #a9a9a9;" text="Thêm">
+            <JFXButton fx:id="settingAddButton" buttonType="RAISED" contentDisplay="BOTTOM" layoutX="35.0" layoutY="79.0" onAction="#settingAddButtonAction" prefHeight="86.0" prefWidth="82.0" style="-fx-border-color: #a9a9a9;" text="Thêm">
                <graphic>
-                  <FontAwesomeIcon glyphName="BOOK" size="2em" />
+                  <FontAwesomeIcon fill="#0000007f" glyphName="BOOK" size="2em" stroke="#00000088" />
                </graphic>
                <font>
                   <Font size="14.0" />
@@ -79,11 +82,11 @@
          </children></AnchorPane>
    </center>
    <top>
-      <AnchorPane prefHeight="45.0" prefWidth="800.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="63.0" prefWidth="1000.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="323.0" layoutY="9.0" opacity="0.9" prefHeight="26.0" prefWidth="110.0" text="SETTING">
+            <Label alignment="CENTER" layoutX="357.0" layoutY="16.0" opacity="0.9" prefHeight="42.0" prefWidth="210.0" text="SETTING">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
                <effect>
                   <Glow level="0.24" />
@@ -91,15 +94,20 @@
             </Label>
             <JFXButton fx:id="settingBackButton" contentDisplay="GRAPHIC_ONLY" onAction="#backwardScene" text="Button">
                <graphic>
-                  <FontAwesomeIcon glyphName="ANGLE_LEFT" size="1.5em" />
+                  <FontAwesomeIcon fill="#00000092" glyphName="ANGLE_LEFT" size="2em" stroke="#000000a4" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="closeButton" contentDisplay="GRAPHIC_ONLY" layoutX="964.0" onAction="#handleCloseButtonAction" text="Button">
+               <graphic>
+                  <FontAwesomeIcon fill="#00000092" glyphName="TIMES" size="2em" stroke="#000000a4" />
                </graphic>
             </JFXButton>
          </children></AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="45.0" prefWidth="800.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="58.0" prefWidth="1000.0" style="-fx-background-color: #fff5ee;" BorderPane.alignment="CENTER">
          <children>
-            <JFXSnackbar fx:id="Notification" layoutX="350.0" layoutY="15.0" />
+            <JFXSnackbar fx:id="Notification" layoutX="415.0" layoutY="24.0" />
          </children></AnchorPane>
    </bottom>
 </BorderPane>

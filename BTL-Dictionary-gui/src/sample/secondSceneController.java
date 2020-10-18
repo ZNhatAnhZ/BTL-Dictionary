@@ -1,5 +1,6 @@
 package sample;
 
+import animatefx.animation.FadeIn;
 import com.jfoenix.controls.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -54,6 +55,7 @@ public class secondSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void handleCloseButtonAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -195,6 +197,11 @@ public class secondSceneController {
                 temp = s.split("<br />");
                 setSecondDefinition(s1);
                 setSecondDefinition(temp);
+                if (Dict.isFavWord(firstListView1.getSelectionModel().getSelectedItem())) {
+                    secondRadioButton.setSelected(true);
+                } else {
+                    secondRadioButton.setSelected(false);
+                }
             } else {
                 String[] temp = {"Không tìm thấy từ đó"};
                 setSecondDefinition(temp);
@@ -211,6 +218,11 @@ public class secondSceneController {
                 temp = s.split("<br />");
                 setSecondDefinition(s1);
                 setSecondDefinition(temp);
+                if (Dict.isFavWord(firstListView2.getSelectionModel().getSelectedItem())) {
+                    secondRadioButton.setSelected(true);
+                } else {
+                    secondRadioButton.setSelected(false);
+                }
             } else {
                 String[] temp = {"Không tìm thấy từ đó"};
                 setSecondDefinition(temp);

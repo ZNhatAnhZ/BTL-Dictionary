@@ -1,5 +1,6 @@
 package sample;
 
+import animatefx.animation.FadeIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTabPane;
@@ -64,6 +65,7 @@ public class apiSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void translateAction(ActionEvent event) throws IOException {
         int leftIndex = apiLeftTabPane.getSelectionModel().getSelectedIndex();

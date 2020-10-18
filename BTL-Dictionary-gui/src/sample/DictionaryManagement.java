@@ -127,7 +127,7 @@ public class DictionaryManagement {
     public void insertFromMySQL() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/testing?characterEncoding=UTF-8&&" + "useSSL=false","root","1892001");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8&&" + "useSSL=false","root","1892001");
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("SELECT * FROM dictionary_data");
             while(rs.next()) {

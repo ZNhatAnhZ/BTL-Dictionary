@@ -1,5 +1,6 @@
 package sample;
 
+import animatefx.animation.FadeIn;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ public class DictionaryApplication extends Application {
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+        new FadeIn(root).play();
     }
 
     public void runApplication(String[] s) {

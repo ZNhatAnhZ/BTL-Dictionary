@@ -1,5 +1,6 @@
 package sample;
 
+import animatefx.animation.FadeIn;
 import com.jfoenix.controls.JFXAutoCompletePopup;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
@@ -91,6 +92,7 @@ public class firstSceneController {
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(new Scene(root, 1000, 600));
                 window.show();
+                new FadeIn(root).play();
             } else {
                 Label tempLabel = new Label("Không tìm thấy từ đó");
                 tempLabel.setTextFill(Paint.valueOf("Red"));
@@ -109,6 +111,7 @@ public class firstSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void firstApiButtonAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -117,6 +120,7 @@ public class firstSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void firstFavButtonAction (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -128,6 +132,7 @@ public class firstSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void firstHisButtonAction (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -139,5 +144,6 @@ public class firstSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
 }

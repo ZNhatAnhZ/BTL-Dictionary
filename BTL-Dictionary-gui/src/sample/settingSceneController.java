@@ -1,5 +1,6 @@
 package sample;
 
+import animatefx.animation.FadeIn;
 import com.jfoenix.controls.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -81,6 +82,7 @@ public class settingSceneController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 1000, 600));
         window.show();
+        new FadeIn(root).play();
     }
     public void settingSearchButtonAction(ActionEvent event) throws IOException {
         Platform.runLater(()-> {
@@ -157,7 +159,7 @@ public class settingSceneController {
 
             Connection con = null;
             try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing?characterEncoding=UTF-8", "root", "1892001");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8", "root", "1892001");
                 String query = "UPDATE dictionary_data SET detail=? WHERE word=? ";
                 String query1 = "UPDATE pronunciation SET pronun=? WHERE word=? ";
                 PreparedStatement ps = con.prepareStatement(query);
@@ -204,7 +206,7 @@ public class settingSceneController {
 
             Connection con = null;
             try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing?characterEncoding=UTF-8", "root", "1892001");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8", "root", "1892001");
                 String query = "INSERT INTO dictionary_data (word, detail) VALUES (?, ?) ";
                 String query1 = "INSERT INTO pronunciation (word, pronun) VALUES (?, ?) ";
                 PreparedStatement ps = con.prepareStatement(query);
@@ -235,7 +237,7 @@ public class settingSceneController {
     public void settingRemoveButtonAction(ActionEvent event) throws IOException {
         Connection con = null;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing?characterEncoding=UTF-8", "root", "1892001");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dictionary_database?characterEncoding=UTF-8", "root", "1892001");
             String query = "DELETE FROM dictionary_data WHERE word=? ";
             String query1 = "DELETE FROM pronunciation WHERE id=? ";
             PreparedStatement ps = con.prepareStatement(query);
